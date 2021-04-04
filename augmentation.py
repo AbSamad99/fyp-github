@@ -466,6 +466,20 @@ def save_all_from_each_class(folder_path, save_path):
             cv.imwrite(save_path + '/' + image, img)
 
 
+def print_list(folder_path):
+    count = 0
+    for folder in os.listdir(folder_path):
+        images = [f for f in os.listdir(folder_path + '/'+folder) if os.path.isfile(
+            os.path.join(folder_path+'/' + folder, f))]
+
+        if len(images) > 26:
+            count = count+1
+            print(folder, len(images))
+    print('count', count)
+
+
+# print_list(folder_path)
+
 augment(folder_path, save_path)
 
 # rename_folders(folder_path)
